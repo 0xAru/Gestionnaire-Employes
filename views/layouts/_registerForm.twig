@@ -1,0 +1,61 @@
+{# block main contenant le formulaire d'inscription pour les entreprises, chaque "p" permet d'afficher les erreurs si un champs n'est pas correcctement rempli #}
+{% block main %}
+	<main class="flex justify-center my-16 columns-1">
+		<div class="w-full max-w-xs">
+				<h2 class="mb-6 lg:mb-10 text-center font-bold text-4xl lg:text-5xl">Inscription</h2>
+				<form action="/addBusiness" method="POST" class="bg-white shadow rounded px-8 pt-6 pb-8 mb-4">
+					<div class="mb-4">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="business_name">
+							Nom de l'entreprise
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="business_name" name="business_name" type="text" placeholder="Dénomination sociale">
+						<p class="error"><small class="text-red-500">{{errors.business_name.message}}</small></p>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="siret_number">
+							Numéro SIRET de l'entreprise
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="siret_number" name="siret_number" type="text" placeholder="123 123 123 12345">
+						<p class="error"><small class="text-red-500">{{errors.siret_number.message}}</small></p>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="business_director">
+							Directeur de l'entreprise
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="business_director" name="business_director" type="text" placeholder="Jon Doe">
+						<p class="error"><small class="text-red-500">{{errors.business_director.message}}</small></p>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+							Email
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="monentreprise@example.com">
+						<p class="error"><small class="text-red-500">{{errors.email.message}}</small></p>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+							Mot de passe
+							<br>
+							<small>Minimun 8 caractères dont une majuscule, une minuscule et un chiffre.</small>
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="************">
+						<p class="error"><small class="text-red-500">{{errors.password.message}}</small></p>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="confirm_password">
+							Confirmez le mot de passe
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="confirm_password" name="confirm_password" type="password" placeholder="************">
+						<p class="error"><small class="text-red-500">{{errors.confirm_password.message}}</small></p>
+					</div>
+					<div class="flex items-center justify-center">
+						<div class="flex items-center justify-center">
+							<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+								S'inscrire
+							</button>
+						</div>
+					</div>
+				</form>
+		</div>
+	</main>
+{% endblock %}

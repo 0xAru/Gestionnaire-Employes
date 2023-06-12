@@ -1,0 +1,23 @@
+{# tableau de bord des entreprises, il est accessible uniquement si l'utilisateur est connecté #}
+{% extends "../base.twig" %}
+
+{% block main %}
+	<main class="flex flex-wrap flex-col items-center my-10 lg:my-16 columns-1 md:columns-2">
+		{% include "../layouts/_employeeForm.twig" %}
+		<p class="error text-red-500 text-2xl">{{errors}}
+			{{messages}}</p>
+
+		<form action="/adminDashboard" method="GET" class="mb-10">
+			<input type="text" name="search" placeholder="Rechercher par nom" class="border border-gray-300 rounded px-4 py-2">
+			<button type="submit" class="bg-cyan-950 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded ml-2">Rechercher</button>
+		</form>
+
+		<div class="flex flex-col justify-center items-center w-100 lg:flex-row lg:flex-wrap">
+			{% include "../layouts/_employeeView.twig" %}
+		</div>
+	</main>
+{% endblock %}
+
+{% block script %}
+	<script src="/js/main.js"></script>
+{% endblock %}

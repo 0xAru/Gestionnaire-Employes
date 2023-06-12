@@ -1,0 +1,36 @@
+{# block main contenant le formulaire de connexion #}
+{% block main %}
+	<main class="flex justify-center my-32 columns-1">
+		<p class="error">{{errors.server_error}}</p>
+		<div class="w-full max-w-xs">
+			<h2 class="mb-6 lg:mb-10 text-center font-bold text-4xl lg:text-5xl">Connexion</h2>
+			<form action="/login" method="POST" class="bg-white shadow rounded px-8 pt-6 pb-8 mb-4">
+				<div class="mb-4">
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+							Email
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="monentreprise@example.com">
+						<p class="error">
+							<small class="text-red-500">{{errors.email}}</small>
+						</p>
+					</div>
+					<div class="mb-6">
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+							Mot de passe
+						</label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="************">
+						<p class="error">
+							<small class="text-red-500">{{errors.password}}</small>
+						</p>
+					</div>
+					<div class="flex items-center justify-center">	
+							<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+								Se connecter
+							</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+{% endblock %}

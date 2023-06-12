@@ -1,0 +1,33 @@
+{# block qui permet l'affichage des employés enregistrés dans la base de données #}
+{% for employee in employees %}
+	<div class="shadow px-4 py-6 w-100 h-100 mb-6 lg:mr-6">
+		<div class="flex flex-col">
+			<div class="pb-6 text-center">
+				<h2>{{employee.firstname}}
+					{{employee.name}}</h2>
+			</div>
+			<div class="flex justify-center h-full">
+				<img src="/uploads/{{employee.photo}}" alt="Photo de l'employé" class="w-40 h-40 object-cover rounded-full">
+			</div>
+			<div class="text-center pb-8">
+				<p>{{employee.function}}</p>
+				<p>Nombre de blâme:
+					{{employee.number_of_blame}}</p>
+			</div>
+			<div class="flex flex-wrap justify-center">
+				<a href="/updateEmployee/{{employee.id}}" class="bg-cyan-950 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 mx-4">Modifier</a>
+				<a href="#" data-employee={{employee.id}} onclick="toggleModal(this)" class="bg-cyan-950 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 mx-4">Supprimer</a>
+				<a href="/blameEmployee/{{employee.id}}" class="bg-cyan-950 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 mx-4">Blâmer</a>
+			</div>
+			<div class="overlay">
+				<div class="modal">
+					<p class="mb-10">voulez-vous vraiment supprimer cet employé?</p>
+					<div class="pb-6 flex justify-center">
+						<a href="" id="delete-button" class="bg-cyan-950 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 mx-4">Oui, je suis sûr</a>
+						<a href="" class="bg-cyan-950 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 mx-4">Non</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}

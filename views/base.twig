@@ -1,0 +1,26 @@
+{# Cette page correspond à la structure de base qui sera réutilisée dans chaque page de l'application #}
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="/css/style.css">
+		<title>Gestionnaire d'Employés</title>
+	</head>
+	<body>
+		{% block header %}
+			{% include "./layouts/_header.twig" %}
+		{% endblock %}
+
+		{% block main %}{% endblock %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+		{% block script %}{% endblock %}
+
+		{% block footer %}
+			{% include "./layouts/_footer.twig" %}
+		{% endblock %}
+	</body>
+</html>

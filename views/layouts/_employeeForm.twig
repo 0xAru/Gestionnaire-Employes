@@ -1,0 +1,50 @@
+{# bloc main contenant un formulaire d'ajout d'employé, il permet egalement la modification d'un employé déjà existant #}
+{% block main %}
+	<div class="w-full max-w-xs">
+		<h2 class="mb-6 lg:mb-10 text-center font-bold text-2xl lg:text-3xl">Ajouter un nouvel employé</h2>
+		<form {% if employee %} action="/updateEmployee/{{employee.id}}" {% else %} action="/addEmployee" {% endif %} method="POST" enctype="multipart/form-data" class="bg-white shadow rounded px-8 pt-6 pb-8 mb-10">
+			<div class="mb-4">
+				<div class="mb-6">
+					<label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+						Nom de l'employé
+					</label>
+					<input type="text" name="name" id="name" {% if employee %} value="{{employee.name}}" {% endif %} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Doe" required>
+					<p class="error">{{errors.name.message}}</p>
+				</div>
+				<div class="mb-6">
+					<label class="block text-gray-700 text-sm font-bold mb-2" for="firstname">
+						Prénom de l'employé
+					</label>
+					<input type="text" name="firstname" id="firstname" {% if employee %} value="{{employee.firstname}}" {% endif %} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="John" required>
+					<p class="error">{{errors.firstname.message}}</p>
+				</div>
+				<div class="mb-6">
+					<label class="block text-gray-700 text-sm font-bold mb-2" for="function">
+						Fonction dans l'entreprise
+					</label>
+					<input type="text" name="function" id="function" {% if employee %} value="{{employee.function}}" {% endif %} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Développeur, Secrétaire..." required>
+					<p class="error">{{errors.function.message}}</p>
+				</div>
+				<div class="file-input-container mb-6">
+					<label class="file-input-label block text-gray-700 text-sm font-bold mb-2 cursor-pointer text-center hover:text-cyan-600 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" for="photo">
+						Sélectionner une image
+					</label>
+					<input type="file" name="photo" id="photo" class="file-input hidden" onchange="previewImage(event)" {% if employee %} value="{{employee.photo}}" {% endif %}>
+					<span class="file-name"></span>
+					<div class="image-preview flex justify-center">
+						<img id="preview" src="#" alt="" class="hidden w-20 h-20 object-cover rounded-full">
+					</div>
+				</div>
+				<div class="flex items-center justify-center">
+					<button type="submit" class="bg-cyan-950 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+						{% if employee %}
+							Modifier
+						{% else %}
+							Ajouter cet employé
+						{% endif %}
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}
